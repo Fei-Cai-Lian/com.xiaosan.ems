@@ -35,12 +35,12 @@ public class EmpManagerLoginController extends HttpServlet {
         //收参——验证码
         String inputVcode = request.getParameter("inputVcode") ;
 
-        String codes = (String) request.getSession().getAttribute("codes") ;
+        String codes = (String) request.getSession().getAttribute("codes");
         /*
         对验证码进行判断
          */
         //非空 且 验证码正确（不区分大小写）
-        if( !inputVcode.isEmpty() && inputVcode.equalsIgnoreCase(codes) ){
+        if( ! inputVcode.isEmpty() && inputVcode.equalsIgnoreCase(codes) ){
 
             //调用业务逻辑
             EmpManagerService empManagerService = new EmpManagerServiceImpl() ;
@@ -53,7 +53,7 @@ public class EmpManagerLoginController extends HttpServlet {
 
                 //通过重定向，跳转到 查询所有的controller
 
-                response.sendRedirect(request.getContextPath()+"/manager/showAllEmp");
+                response.sendRedirect(request.getContextPath()+"/manager/safe/showAllEmp");
 
 /*
 ————》controller.ShowAllEmpController
@@ -70,6 +70,7 @@ public class EmpManagerLoginController extends HttpServlet {
         }
 /*
 ————》测试 登录页面 是否有验证码————结果：能出现验证码，且能验证成功，控制台显示登录成功
+————》分页查询 ——entity 实体类下的 Emp
 */
     }
 }
