@@ -28,11 +28,12 @@ public class EmpManagerLoginController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        // ——》过滤器
-
+//  ——》过滤器
+        //收参
         String username = request.getParameter("username") ;
         String password = request.getParameter("password") ;
 
+        //调用业务逻辑
         EmpManagerService empManagerService = new EmpManagerServiceImpl() ;
         EmpManager empManager = empManagerService.login(username,password) ;
         //对登录进行判断

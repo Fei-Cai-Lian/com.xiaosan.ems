@@ -1,15 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: 小三
-  Date: 2021/8/15
-  Time: 17:46
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>登录页面</title>
-    <link rel="stylesheet" type="text/css" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="${pageContext.request.contextPath}/css/style.css" />
 </head>
 
 <body>
@@ -18,7 +11,7 @@
         <div id="header">
             <div id="rightheader">
                 <p>
-                    2009/11/20 <br />
+                    2021/08/16<br />
                 </p>
             </div>
             <div id="topheader">
@@ -31,18 +24,18 @@
         <div id="content">
             <p id="whereami"></p>
             <h1>login</h1>
-            <form action="emplist.html" method="post">
+            <form action="${pageContext.request.contextPath}/manager/empManagerLogin" method="post">
                 <table cellpadding="0" cellspacing="0" border="0"
                        class="form_table">
                     <tr>
                         <td valign="middle" align="right">username:</td>
                         <td valign="middle" align="left"><input type="text"
-                                                                class="inputgri" name="username" /></td>
+                                                                class="inputgri" name="username"/></td>
                     </tr>
                     <tr>
                         <td valign="middle" align="right">password:</td>
                         <td valign="middle" align="left"><input type="password"
-                                                                class="inputgri" name="password " /></td>
+                                                                class="inputgri" name="password"/></td>
                     </tr>
                 </table>
                 <p>
