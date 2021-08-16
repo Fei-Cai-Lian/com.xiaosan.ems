@@ -37,6 +37,11 @@
                         <td valign="middle" align="left"><input type="password"
                                                                 class="inputgri" name="password"/></td>
                     </tr>
+                    <tr>
+                        <td valign="middle" align="right">validateCode:</td>
+                        <td valign="middle" align="left"><input type="text"
+                                                                class="inputgri" name="inputVcode"/><img src="${pageContext.request.contextPath}/createCode"></td>
+                    </tr>
                 </table>
                 <p>
                     <input type="submit" class="button" value="Submit &raquo;" />

@@ -1,5 +1,7 @@
 package com.xiaosan.ems.controller;
 
+import cn.dsna.util.images.ValidateCode;
+
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.annotation.*;
@@ -16,18 +18,28 @@ import java.io.IOException;
  *      8——web 下的login.jsp
  *      9——controller 中的 EmpManagerLoginController
  *      10——controller 中的 ShowAllEmpController
- *
+ *      11—— controller 中的 CreateCodeController ——生成验证码
  */
-@WebServlet(name = "ShowAllEmpController", value = "/manager/showAllEmp")
-public class ShowAllEmpController extends HttpServlet {
+@WebServlet(name = "CreateCodeController", value = "/createCode")
+public class CreateCodeController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        doPost(request, response);
+        doPost(request, response) ;
     }
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("登录成功");
+        //四参创建 验证码
+        ValidateCode validateCode = new ValidateCode( 200,30,4,10) ;
+        //获取输入内容
+        String codes = validateCode.getCode() ;
+        //在session 作用域中存储 验证码
+        HttpSession session = request.getSession() ;
+        session.setAttribute("codes" , codes);
+
+        //响应给客户端页面
+        validateCode.write(response.getOutputStream());
+//      ————》》去 login.jsp 中添加 validateCode 即验证码框 ;去 controller 下的 EmpManagerLoginController 收参
+
     }
 }
-//——》 验证登录是否成功 ——》controller.CreateCodeController

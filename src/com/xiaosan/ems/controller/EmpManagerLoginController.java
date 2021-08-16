@@ -32,27 +32,44 @@ public class EmpManagerLoginController extends HttpServlet {
         //收参
         String username = request.getParameter("username") ;
         String password = request.getParameter("password") ;
+        //收参——验证码
+        String inputVcode = request.getParameter("inputVcode") ;
 
-        //调用业务逻辑
-        EmpManagerService empManagerService = new EmpManagerServiceImpl() ;
-        EmpManager empManager = empManagerService.login(username,password) ;
-        //对登录进行判断
-        if(empManager != null ){
-            //获取session 权限存储
-            HttpSession session = request.getSession() ;
-            session.setAttribute("empManager",empManager);
+        String codes = (String) request.getSession().getAttribute("codes") ;
+        /*
+        对验证码进行判断
+         */
+        //非空 且 验证码正确（不区分大小写）
+        if( !inputVcode.isEmpty() && inputVcode.equalsIgnoreCase(codes) ){
 
-            //通过重定向，跳转到 查询所有的controller
+            //调用业务逻辑
+            EmpManagerService empManagerService = new EmpManagerServiceImpl() ;
+            EmpManager empManager = empManagerService.login(username,password) ;
+            //对登录进行判断
+            if(empManager != null ){
+                //获取session 权限存储
+                HttpSession session = request.getSession() ;
+                session.setAttribute("empManager",empManager);
 
-            response.sendRedirect(request.getContextPath()+"/manager/showAllEmp");
+                //通过重定向，跳转到 查询所有的controller
 
-// ————》controller.ShowAllEmpController
+                response.sendRedirect(request.getContextPath()+"/manager/showAllEmp");
+
+/*
+————》controller.ShowAllEmpController
+ */
+
+            }else {
+                //为空，重定向到登陆页面——login.jsp
+                response.sendRedirect(request.getContextPath()+ "/login.jsp");
+            }
 
         }else {
-            //为空，重定向到登陆页面——login.jsp
+            //为空 或者 验证码不正确——重定向到登录页面
             response.sendRedirect(request.getContextPath()+ "/login.jsp");
         }
-
-
+/*
+————》测试 登录页面 是否有验证码————结果：能出现验证码，且能验证成功，控制台显示登录成功
+*/
     }
 }
