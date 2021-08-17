@@ -79,9 +79,40 @@ public class EmpServiceImpl implements EmpService {
         }
         return result;
     }
+
+    //查询单个
+    @Override
+    public Emp selectEmpById(int id) {
+        Emp emp = null ;
+        try {
+            DbUtils.begin();
+            emp = empDao.select(id);
+            DbUtils.commit();
+        } catch (Exception e) {
+            DbUtils.rollback();
+            e.printStackTrace();
+        }
+        return emp;
+    }
+
+    @Override
+    public int modifyEmp(Emp emp) {
+        int result = 0 ;
+        try {
+            DbUtils.begin();
+            result = empDao.update(emp);
+            DbUtils.commit();
+        } catch (Exception e) {
+            DbUtils.rollback();
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
 /*
 ————》 补充    登录成功    controller.ShowAllEmpController
            controller.DeleteEmpController
            controller.insertEmpController
+           controller.ShowEmpController
+
  */

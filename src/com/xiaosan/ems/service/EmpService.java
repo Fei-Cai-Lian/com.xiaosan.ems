@@ -27,11 +27,19 @@ import java.util.List;
  */
 public interface EmpService {
     public List<Emp> showAllEmpByPage(Page page) ;
+
     //删除
     public int deleteEmp(int id) ;
 
     //添加
     public int addEmp(Emp emp) ;
+
+    //查询
+    public Emp selectEmpById(int id) ;
+
+    //修改
+    public int modifyEmp(Emp emp) ;
+
 }
 /*
 ——》 service 下的impl 下的Service.impl.EmpServiceImpl

@@ -5,6 +5,7 @@ import com.xiaosan.ems.entity.Emp;
 import com.xiaosan.ems.entity.Page;
 import com.xiaosan.ems.utils.DbUtils;
 import org.apache.commons.dbutils.QueryRunner;
+import org.apache.commons.dbutils.handlers.BeanHandler;
 import org.apache.commons.dbutils.handlers.BeanListHandler;
 import org.apache.commons.dbutils.handlers.ScalarHandler;
 
@@ -72,6 +73,29 @@ public class EmpDaoImpl implements EmpDao {
         try {
             int result = queryRunner.update(DbUtils.getConnection(),"insert into emp(name, salary, age) values (?, ?, ?) ",emp.getName() ,emp.getSalary() ,emp.getAge() ) ;
             return result ;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Override
+    public Emp select(int id) {
+        try {
+            //通过数据库连接，把获取到的数据封装进    BeanHandler 中
+            Emp emp = queryRunner.query(DbUtils.getConnection(),"select * from emp where id = ? ",new BeanHandler<Emp>(Emp.class));
+            return emp ;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    @Override
+    public int update(Emp emp) {
+        try {
+            int result = queryRunner.update(DbUtils.getConnection(),"update emp set name=?, salary=?, age=? where id=?", emp.getName(), emp.getSalary(), emp.getAge(), emp.getId());
+            return result ;   //返回受影响行数
         } catch (SQLException e) {
             e.printStackTrace();
         }
