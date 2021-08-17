@@ -56,8 +56,14 @@
                     </td>
                 </tr>
 
-                <c:forEach items="${emps}" var="emp" >
-                    <tr class="row1">
+                <c:forEach items="${emps}" var="emp" varStatus="e" >
+<%--                    下面的两个if —— 奇数行 与偶数行的样式不同 --%>
+                    <c:if test="${e.count % 2 != 0}">
+                        <tr class="row1">
+                    </c:if>
+                    <c:if test="${e.count % 2 == 0}">
+                        <tr class="row2">
+                    </c:if>
                         <td>
                             ${emp.id}
                         </td>
@@ -75,7 +81,29 @@
                         </td>
                     </tr>
                 </c:forEach>
+                <tr>
+<%--                    跨五列操作  居中 --%>
+                    <td colspan="5" align="center">
 
+                        <a href="<c:url context='${pageContext.request.contextPath}' value='/manager/safe/showAllEmp?pageIndex=1'/>">首页</a>
+
+                        <c:if test="${page.pageIndex > 1}">
+                            <a href="<c:url context='${pageContext.request.contextPath}' value='/manager/safe/showAllEmp?pageIndex=${page.pageIndex -1}'/>">上一页</a>
+                        </c:if>
+                        <c:if test="${page.pageIndex == 1}">
+                            <a>上一页</a>
+                        </c:if>
+
+                        <c:if test="${page.pageIndex < page.totalPages}">
+                            <a href="<c:url context='${pageContext.request.contextPath}' value='/manager/safe/showAllEmp?pageIndex=${page.pageIndex +1}'/>">下一页</a>
+                        </c:if>
+                        <c:if test="${page.pageIndex == page.totalPages}">
+                            <a>下一页</a>
+                        </c:if>
+
+                        <a href="<c:url context='${pageContext.request.contextPath}' value='/manager/safe/showAllEmp?pageIndex=${page.totalPages}'/>">尾页</a>
+                    </td>
+                </tr>
             </table>
             <p>
                 <input type="button" class="button" value="Add Employee" onclick="location='addEmp.html'"/>

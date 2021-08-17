@@ -58,7 +58,7 @@ public class ShowAllEmpController extends HttpServlet {
         //通过转发——》跳转到 emplist.jsp 页面
         request.getRequestDispatcher("/emplist.jsp").forward(request,response);
 /*
-——》 编写页面 emplist.jsp
+——》 编写页面 emplist.jsp ————》补充emplist.jsp中首尾页等的跳转
  */
     }
 }
