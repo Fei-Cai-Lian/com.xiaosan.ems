@@ -83,7 +83,7 @@ public class EmpDaoImpl implements EmpDao {
     public Emp select(int id) {
         try {
             //通过数据库连接，把获取到的数据封装进    BeanHandler 中
-            Emp emp = queryRunner.query(DbUtils.getConnection(),"select * from emp where id = ? ",new BeanHandler<Emp>(Emp.class));
+            Emp emp = queryRunner.query(DbUtils.getConnection(),"select * from emp where id=?",new BeanHandler<Emp>(Emp.class),id);
             return emp ;
         } catch (SQLException e) {
             e.printStackTrace();

@@ -37,7 +37,7 @@
             <h1>
                 update Emp info:
             </h1>
-            <form action="emplist.html" method="post">
+            <form action="${pageContext.request.contextPath}/manager/safe/updateEmp" method="post">
                 <table cellpadding="0" cellspacing="0" border="0"
                        class="form_table">
                     <tr>
@@ -45,7 +45,7 @@
                             id:
                         </td>
                         <td valign="middle" align="left">
-                            ${emp.id}
+                            <input type="text" class="inputgri" name="id" value="${emp.id}" readonly/>
                         </td>
                     </tr>
                     <tr>
