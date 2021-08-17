@@ -67,6 +67,7 @@ public class Emp {
 
     public Emp() {
     }
+
 }
 /*
     ——》 entity.Page(页码用的)

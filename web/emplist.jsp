@@ -83,7 +83,7 @@
                     </tr>
                 </c:forEach>
                 <tr>
-<%--                    跨五列操作  居中 --%>
+<%--                   超链接跳转 跨五列操作  居中 --%>
                     <td colspan="5" align="center">
 
                         <a href="<c:url context='${pageContext.request.contextPath}' value='/manager/safe/showAllEmp?pageIndex=1'/>">首页</a>
@@ -106,8 +106,9 @@
                     </td>
                 </tr>
             </table>
+<%--            新增按钮   addEmp.jsp --%>
             <p>
-                <input type="button" class="button" value="Add Employee" onclick="location='addEmp.html'"/>
+                <input type="button" class="button" value="Add Employee" onclick="location='${pageContext.request.contextPath}/addEmp.jsp'"/>
             </p>
         </div>
     </div>

@@ -67,6 +67,17 @@ public class EmpDaoImpl implements EmpDao {
         return 0;
     }
 
+    @Override
+    public int insert(Emp emp) {
+        try {
+            int result = queryRunner.update(DbUtils.getConnection(),"insert into emp(name, salary, age) values (?, ?, ?) ",emp.getName() ,emp.getSalary() ,emp.getAge() ) ;
+            return result ;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
 /*
 ——》 service 下的 EmpService 接口
  */

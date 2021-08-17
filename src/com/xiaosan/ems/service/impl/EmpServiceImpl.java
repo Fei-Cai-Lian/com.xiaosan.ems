@@ -65,8 +65,23 @@ public class EmpServiceImpl implements EmpService {
         }
         return result;
     }
+
+    @Override
+    public int addEmp(Emp emp) {
+        int result = 0 ;
+        try {
+            DbUtils.begin();
+            result = empDao.insert(emp) ;
+            DbUtils.commit();
+        } catch (Exception e) {
+            DbUtils.rollback();
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
 /*
 ————》 补充    登录成功    controller.ShowAllEmpController
            controller.DeleteEmpController
+           controller.insertEmpController
  */

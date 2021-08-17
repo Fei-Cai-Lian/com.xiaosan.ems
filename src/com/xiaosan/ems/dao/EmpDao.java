@@ -32,8 +32,10 @@ public interface EmpDao {
     //删除员工_8.17 10:16
     public int delete(int id) ;
 
+    //添加员工_8.17 10:52
+    public int insert(Emp emp);
 
 /*
    ——》实现类   dao.impl.EmpDaoImpl
  */
-}
+ }

@@ -29,6 +29,9 @@ public interface EmpService {
     public List<Emp> showAllEmpByPage(Page page) ;
     //删除
     public int deleteEmp(int id) ;
+
+    //添加
+    public int addEmp(Emp emp) ;
 }
 /*
 ——》 service 下的impl 下的Service.impl.EmpServiceImpl
