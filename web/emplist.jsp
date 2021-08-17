@@ -77,7 +77,8 @@
                             ${emp.age}
                         </td>
                         <td>
-                            <a href="emplist.html">delete emp</a>&nbsp;<a href="updateEmp.html">update emp</a>
+<%--                            ————》》dao.EmpDao 中添加删除  修改的方法  --%>
+                            <a href="<c:url context='${pageContext.request.contextPath}' value='/manager/safe/deleteEmp?id=${emp.id}' />">delete emp</a>&nbsp;<a href="updateEmp.html">update emp</a>
                         </td>
                     </tr>
                 </c:forEach>

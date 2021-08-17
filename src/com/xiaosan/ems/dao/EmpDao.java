@@ -21,7 +21,7 @@ import java.util.List;
  *      12—— entity 实体类下的 Emp
  *      13—— entity 实体类下的 Page  （分页）
  *      14—— dao 下的EmpDao 接口
- *
+ *      补充方法——delete
  */
 public interface EmpDao {
     //查询所有
@@ -29,7 +29,11 @@ public interface EmpDao {
     //查询员工的总数量
     public long selectCount() ;
 
-}
+    //删除员工_8.17 10:16
+    public int delete(int id) ;
+
+
 /*
    ——》实现类   dao.impl.EmpDaoImpl
  */
+}

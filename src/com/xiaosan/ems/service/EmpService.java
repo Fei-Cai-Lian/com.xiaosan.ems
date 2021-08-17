@@ -23,10 +23,12 @@ import java.util.List;
  *      14—— dao 下的EmpDao 接口
  *      15—— dao 下的EmpDao 接口的实现类 EmpDaoImpl
  *      16—— service 下的 EmpService 接口
- *
+ *          补充 删除操作
  */
 public interface EmpService {
     public List<Emp> showAllEmpByPage(Page page) ;
+    //删除
+    public int deleteEmp(int id) ;
 }
 /*
 ——》 service 下的impl 下的Service.impl.EmpServiceImpl

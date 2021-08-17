@@ -28,7 +28,7 @@ import java.util.List;
  *      13—— entity 实体类下的 Page  （分页）
  *      14—— dao 下的EmpDao 接口
  *      15—— dao 下的EmpDao 接口的实现类 EmpDaoImpl
- *
+ *      补充方法——delete
  */
 public class EmpDaoImpl implements EmpDao {
     private QueryRunner queryRunner = new QueryRunner() ;
@@ -50,6 +50,17 @@ public class EmpDaoImpl implements EmpDao {
         try {
             long count = queryRunner.query(DbUtils.getConnection(),"select count(*) from emp;",new ScalarHandler<>());
             return count;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    @Override
+    public int delete(int id) {
+        try {
+            int result = queryRunner.update(DbUtils.getConnection(),"delete from emp where id = ?",id);
+            return result ;
         } catch (SQLException e) {
             e.printStackTrace();
         }

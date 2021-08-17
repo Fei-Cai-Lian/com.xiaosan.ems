@@ -51,7 +51,22 @@ public class EmpServiceImpl implements EmpService {
         }
         return emps ;
     }
+
+    @Override
+    public int deleteEmp(int id) {
+        int result = 0 ;
+        try {
+            DbUtils.begin();
+            result = empDao.delete(id) ;
+            DbUtils.commit();
+        } catch (Exception e) {
+            DbUtils.rollback();
+            e.printStackTrace();
+        }
+        return result;
+    }
 }
 /*
 ————》 补充    登录成功    controller.ShowAllEmpController
+           controller.DeleteEmpController
  */
